@@ -1,0 +1,8 @@
+.boutique-grid {
+    display: grid;
+    grid-template-columns: 60% 30% 10%;
+}
+
+#pop-up {
+    width: fit-content;
+}

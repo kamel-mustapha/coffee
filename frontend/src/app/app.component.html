@@ -1,0 +1,13 @@
+<div class="w-full h-12 bg-primary relative">
+  <div class="absolute left-4 top-3 font-serif text-xs text-green-900">
+    <span class="text-gray-200 text-xl">CAFETERIA ARAUCARIA</span>
+  </div>
+  <div class="absolute right-24 top-2 active:translate-y-1 transition duration-200"><a href="http://localhost:8000/admin/" target="blank" class="cursor-default"><img class="w-8 h-8 block" src="http://localhost:8000/media/user-cog.svg" alt=""></a></div>
+  <div (click) = "reload_page()" class="absolute right-4 top-3 active:translate-y-1 transition duration-200"><img class="w-6 h-6 block" src="http://localhost:8000/media/undo.svg" alt=""></div>
+</div>
+
+<div>
+  <div class="max-h-large overflow-y-visible">
+    <router-outlet></router-outlet>
+  </div>
+</div>

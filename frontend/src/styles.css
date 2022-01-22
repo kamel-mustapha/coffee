@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: Digital;
+    src: url(./assets/digital-7/digital-7.ttf);
+}
