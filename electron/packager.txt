@@ -1,0 +1,1 @@
+electron-packager . Araucaria --platform=win32 --prune --icon=coffee.ico

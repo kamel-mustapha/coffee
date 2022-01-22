@@ -1,3 +1,4 @@
+from datetime import date
 from distutils.command.upload import upload
 from django.db import models
 
@@ -55,3 +56,7 @@ class Paiement(models.Model):
         equipe.reste += self.travail - self.avance
         equipe.save()
         super().save(*args, **kwargs)
+
+class Retrait(models.Model):
+    date = models.DateField()
+    somme = models.FloatField()

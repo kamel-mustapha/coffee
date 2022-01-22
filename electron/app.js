@@ -8,7 +8,7 @@ function createWindow () {
     height: 1000,
     minWidth : 1400,
     minHeight:1000,
-    // icon: __dirname + '/boutique.ico'
+    icon: __dirname + '/coffee.ico'
     
   })
   mainWindow.maximize()

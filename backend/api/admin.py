@@ -72,3 +72,11 @@ class PaiementAdmin(admin.ModelAdmin):
     )
     list_filter = ('date',)
     
+@admin.register(Retrait)
+class RetraitAdmin(admin.ModelAdmin):
+    list_display = (
+        'date',
+        'somme',
+    )
+    list_filter = ('date',)
+    
