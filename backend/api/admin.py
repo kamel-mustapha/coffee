@@ -18,6 +18,8 @@ class ProduitAdmin(admin.ModelAdmin):
 
     list_editable = (
         'quantite',
+        'prix',
+        'prix_achat',
     )
 
 @admin.register(Vente)
@@ -77,6 +79,14 @@ class RetraitAdmin(admin.ModelAdmin):
     list_display = (
         'date',
         'somme',
+        'personne',
+        'detail'
     )
     list_filter = ('date',)
+    
+@admin.register(Caisse)
+class CaisseAdmin(admin.ModelAdmin):
+    list_display = (
+        'somme',
+    )
     

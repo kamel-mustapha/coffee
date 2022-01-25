@@ -32,6 +32,9 @@ def vente(req):
         total_achat += product.get('quantite') * article.prix_achat
         prod_vendus += 1
 
+    if data.get('remise'):
+        total_vente -= data.get('remise')
+
     Vente.objects.create(
         date = datetime.now(),
         produits = json.dumps(sold_products),
@@ -65,6 +68,14 @@ def vente(req):
         recette[0].total_benefice += total_vente - total_achat
 
     recette[0].save()
+
+    caisse = Caisse.objects.get_or_create(
+        id = 1
+    )
+
+    caisse[0].somme += total_vente
+    caisse[0].save()
+    
     return JsonResponse('succes', safe = False)
 
 def index(req):

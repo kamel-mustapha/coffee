@@ -41,6 +41,8 @@ export class BoutiqueComponent implements OnInit {
     })   
     this.totalPrix[this.selectedTable] = 0
     this.articlesInTable[this.selectedTable] = []
+
+    document.addEventListener('click', () => document.querySelector('#pop-up')?.classList.add('hidden'))
   }
 
   sellProduct(id : number){
@@ -55,7 +57,7 @@ export class BoutiqueComponent implements OnInit {
     this.calculTotalPrix()
   }
 
-  changeTable(numero : number){
+  changeTable(numero : any){
     this.selectedTable = numero
     if(!this.totalPrix[this.selectedTable]){
       this.totalPrix[this.selectedTable] = 0
@@ -81,16 +83,18 @@ export class BoutiqueComponent implements OnInit {
     })
   }
   confirmVente(form : NgForm){
+    
+    this.totalPrix[this.selectedTable] -= form.value.remise
+
     if(form.value.versement && form.value.versement - this.totalPrix[this.selectedTable] >= 0){
       this.totalRendu = form.value.versement - this.totalPrix[this.selectedTable] 
       document.querySelector('#pop-up')?.classList.remove('hidden')
-      setTimeout(() => {
-        document.querySelector('#pop-up')?.classList.add('hidden')
-      },5000)
     } 
     
+   
     let data = {
-      'products' : this.articlesInTable[this.selectedTable]
+      'products' : this.articlesInTable[this.selectedTable],
+      'remise' : form.value.remise
     }
 
     this.server.sell_product(data).subscribe((response:any) => {
@@ -118,5 +122,6 @@ export class BoutiqueComponent implements OnInit {
         }
       }) 
     }
+    
     
 }

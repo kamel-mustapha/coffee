@@ -1,7 +1,7 @@
 from datetime import date
 from distutils.command.upload import upload
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Categorie(models.Model):
     nom = models.CharField(max_length = 200)
@@ -57,6 +57,19 @@ class Paiement(models.Model):
         equipe.save()
         super().save(*args, **kwargs)
 
+
+class Caisse(models.Model):
+    somme = models.FloatField(default = 0)
+    class Meta:
+        verbose_name_plural = "Caisse"
 class Retrait(models.Model):
     date = models.DateField()
     somme = models.FloatField()
+    personne = models.ForeignKey(User, on_delete = models.SET_NULL, null = True, blank = True)
+    detail = models.TextField(null = True, blank = True)
+    def save(self, *args, **kwargs):
+        caisse = Caisse.objects.get_or_create(id = 1)
+        caisse[0].somme -= self.somme
+        caisse[0].save()
+        super().save(*args, **kwargs)
+    

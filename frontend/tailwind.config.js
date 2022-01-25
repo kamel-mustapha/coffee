@@ -17,14 +17,14 @@ module.exports = {
           'digital' : ['Digital']
         },
         maxHeight: {
-          'mi-screen' : '55vh',
+          'mi-screen' : '60vh',
           'large' : '92vh'
         },
         height: {
           'large' : '90vh'
         },
         minHeight: {
-          'mi-screen' : '55vh',
+          'mi-screen' : '60vh',
           'large' : '92vh'
         },
         backgroundColor: {

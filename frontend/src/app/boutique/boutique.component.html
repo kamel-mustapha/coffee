@@ -1,17 +1,48 @@
 <div class="boutique-grid">
+
+
+   <!-- Tables section -->
+   <div class="py-4 min-h-large max-h-large w-full overflow-y-auto overflow-x-hidden text-center grid grid-cols-3 gap-2 px-2">
+    <div (click) = "changeTable('P1')" class="relative inline-block w-24 h-24 my-2 rounded-lg active:translate-y-1 transition duration-200 bg-secondary">
+      <!-- <div>
+        <img class="block w-8 h-8 mx-auto" src="http://localhost:8000/media/e781ffa83cc7959f4d025c1e24e786e7.svg" alt="">
+      </div> -->
+      <div class="absolute top-8 left-0 right-0 m-auto text-center text-lg text-five">Passager 1</div>
+    </div>  
+    <div (click) = "changeTable('P2')" class="relative inline-block  w-24 h-24 my-2 rounded-lg active:translate-y-1 transition duration-200 bg-secondary">
+      <!-- <div>
+        <img class="block w-8 h-8 mx-auto" src="http://localhost:8000/media/e781ffa83cc7959f4d025c1e24e786e7.svg" alt="">
+      </div> -->
+      <div class="absolute top-8 left-0 right-0 m-auto  text-center text-lg text-five">Passager 2</div>
+    </div>  
+    <div (click) = "changeTable('P3')" class="relative inline-block w-24 h-24 my-2 rounded-lg active:translate-y-1 transition duration-200 bg-secondary">
+      <!-- <div>
+        <img class="block w-8 h-8 mx-auto" src="http://localhost:8000/media/e781ffa83cc7959f4d025c1e24e786e7.svg" alt="">
+      </div> -->
+      <div class="absolute top-8 left-0 right-0 m-auto text-center text-lg text-five">Passager 3</div>
+    </div>  
+
+    <div (click) = "changeTable(table.numero)" *ngFor = "let table of tables" class="inline-block w-24 h-24 px-6 py-2 my-2 rounded-lg active:translate-y-1 transition duration-200 bg-gradient-to-b from-primary to-green-900">
+      <div>
+        <img class="block w-8 h-8 mx-auto" src="http://localhost:8000/media/e781ffa83cc7959f4d025c1e24e786e7.svg" alt="">
+      </div>
+      <div class="text-center text-lg text-five">Table {{table.numero}}</div>
+    </div>  
+    <!-- More tables -->
+  </div>
+
   <!-- Articles section -->
 
     <div class="p-4 w-full min-h-large max-h-large overflow-x-hidden overflow-y-auto">
-      <div class="grid gap-y-4 grid-cols-3 gap-x-6">
-      
-        <a (click) = "sellProduct(product.id)" *ngFor = "let product of products" class="group w-full h-72 active:translate-y-1 transition duration-200">
+      <div class="grid gap-y-4 grid-cols-4 gap-x-2">
+        <a (click) = "sellProduct(product.id)" *ngFor = "let product of products" class="group w-full active:translate-y-1 transition duration-200">
           <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-            <img src="http://localhost:8000{{product.image}}" alt="" class="w-full h-52 object-center object-cover group-hover:opacity-75">
+            <img src="http://localhost:8000{{product.image}}" alt="" class="w-full h-32 object-center object-cover group-hover:opacity-75">
           </div>
-          <h3 class="mt-4 text-md text-gray-700">
+          <h3 class="mt-1 text-md text-gray-700 text-center">
             {{ product.nom }}
           </h3>
-          <p class="mt-1 text-lg font-medium text-gray-900">
+          <p class="mt-1 text-md font-medium text-gray-900 text-center">
             {{ product.prix }} DA
           </p>
         </a>
@@ -19,97 +50,72 @@
       </div>
     </div>
     
+ 
 
 
   <!-- Articles in table section -->
   <div class="text-center p-2">
-    <h1 class="text-3xl mb-2">Table : <span class="text-4xl text-green-800">{{selectedTable}}</span></h1>
-    <div class="flex flex-col">
-      <div class="-my-2 sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div class="shadow border-b border-gray-200 sm:rounded-lg max-h-mi-screen min-h-mi-screen overflow-y-auto overflow-x-hidden">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-primary text-gray-100 font-bold">
-                <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Produit
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
-                    Quantité
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Prix
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    
-                  </th>
-                  
-                </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-gray-200">
-
-
-                <!-- Adding more articles -->
-                <tr *ngFor = "let product of articlesInTable[selectedTable]">
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0 h-10 w-10">
-                        <img class="h-10 w-10 rounded-full" src="http://localhost:8000{{product.image}}" alt="">
-                      </div>
-                      <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">
-                          {{product.nom}}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-sm text-gray-900">
-                      {{product.quantite}}
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      {{product.prix}}
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <img (click) = "deleteFromTable(product.id)" class="block w-6 h-6 active:translate-y-1 duration-200" src="http://localhost:8000/media/trash-alt.svg" alt="">
-                  </td>
-                </tr>
-                <!-- More products  ... -->
-              </tbody>
-            </table>
+    <div class="max-h-mi-screen min-h-mi-screen overflow-y-auto overflow-x-hidden">
+      <div class="articles-grid bg-primary text-gray-200 rounded-t-lg p-1">
+          <div>
+            Table {{selectedTable}}
           </div>
+          <div>
+            Nom
+          </div>
+          <div>
+            Qte
+          </div>
+          <div>
+            Prix
+          </div>
+          <div>
+            
+          </div>
+      </div>
+      <div *ngFor = "let product of articlesInTable[selectedTable]" class="articles-grid px-2 py-2">
+        <div>
+          <img class="h-8 w-8 rounded-full" src="http://localhost:8000{{product.image}}" alt="">
+        </div>
+        <div class="overflow-x-hidden">
+          {{product.nom | titlecase}}
+        </div>
+        <div>
+          <span class="font-bold text-xs">{{product.quantite}}</span>
+        </div>
+        <div>
+          <span class="bg-green-200 rounded-full p-1 font-bold text-xs">{{product.prix}}</span>
+        </div>
+        <div>
+          <img (click) = "deleteFromTable(product.id)" class="block w-6 h-6 active:translate-y-1 duration-200" src="http://localhost:8000/media/trash-alt.svg" alt="">
         </div>
       </div>
     </div>
-    
+
     <div>
-      <span class="font-digital text-8xl">{{totalPrix[selectedTable] | number: "1.2-2"}}</span> DA
+      <span class="font-digital text-6xl">{{totalPrix[selectedTable] | number: "1.2-2"}}</span> DA
     </div>
     
     <div>
-      <form (ngSubmit) = "confirmVente(f)" #f = "ngForm" class="my-2 text-3xl text-gray-200 text-center w-full flex justify-between gap-6">
-        <input name="versement" ngModel type="text" class="inline-block w-full p-4 border border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:ring-transparent" placeholder="Versement">
-        <input type="submit" class="p-4 w-full inline-block bg-primary rounded-md active:translate-y-1 duration-200" value="Confirmer vente">
+      <form (ngSubmit) = "confirmVente(f)" #f = "ngForm" class="my-2 text-xl text-gray-200 text-center w-full">
+        <div  class="flex justify-between gap-2 my-2">
+          <input name="versement" ngModel type="number" class="block w-full p-2 border border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:ring-transparent" placeholder="Versement">
+          <input name="remise" ngModel type="number" class="block w-full p-2 border border-gray-300 rounded-lg text-gray-800 focus:outline-none focus:ring-transparent" placeholder="Remise">
+        </div>
+        <div class="flex justify-between gap-2">
+          <div (click) = "annulerVente()" class="py-2 w-1/2 text-xl bg-red-800 text-gray-200 rounded-md text-center active:translate-y-1 duration-200">
+            <span>Annuler</span>
+          </div>
+          <input type="submit" class="p-2 w-1/2 block bg-primary rounded-md active:translate-y-1 duration-200" value="Confirmer">
+        </div>
+        
       </form>
     </div>
-    <div (click) = "annulerVente()" class="py-4 text-3xl bg-red-800 text-gray-200 rounded-md text-center active:translate-y-1 duration-200">
-      <span>Annuler vente</span>
-    </div>
+    
+
   </div>
 
-  <!-- Tables section -->
-  <div class="py-4 min-h-large max-h-large w-full overflow-y-auto text-center">
-    <div (click) = "changeTable(table.numero)" *ngFor = "let table of tables" class="inline-block w-36 px-6 py-2 my-2 mx-2 rounded-lg active:translate-y-1 transition duration-200 bg-gradient-to-b from-primary to-green-900">
-      <div>
-        <img class="block w-12 h-12 mx-auto" src="http://localhost:8000/media/e781ffa83cc7959f4d025c1e24e786e7.svg" alt="">
-      </div>
-      <div class="text-center text-2xl text-five">Table {{table.numero}}</div>
-    </div>  
-    <!-- More tables -->
-  </div>
+  
 </div>
 
 <div id="pop-up" class="hidden fixed bottom-0 right-0 left-0 mx-auto text-center text-2xl pb-2 px-4 my-2 rounded-xl bg-gray-300 opacity-95">
