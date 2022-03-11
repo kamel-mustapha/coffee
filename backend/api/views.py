@@ -8,7 +8,7 @@ import json
 
 
 def get_product(req):
-    products = Produit.objects.all()
+    products = Produit.objects.all().order_by('categorie')
     products_serial = ProdSerial(products, many = True)
     return JsonResponse(products_serial.data, safe = False)
 

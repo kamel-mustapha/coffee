@@ -5,7 +5,7 @@ from api.models import Produit, Table
 class ProdSerial(serializers.ModelSerializer):
     class Meta:
         model = Produit
-        fields = '__all__'
+        fields = ('id', 'nom', 'prix', 'prix_achat', 'image', 'categorie')
 
 class TableSerial(serializers.ModelSerializer):
     class Meta:

@@ -1,13 +1,17 @@
 .boutique-grid {
-    display: grid;
-    grid-template-columns: 30% 40% 30%;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
 }
 
 #pop-up {
-    width: fit-content;
+  width: fit-content;
 }
 
-.articles-grid{
-    display: grid;
-    grid-template-columns: 20% 40% 15% 15% 10%;
+.articles-grid {
+  display: grid;
+  grid-template-columns: 20% 40% 15% 15% 10%;
+}
+
+.content::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
